@@ -7,9 +7,31 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-public class Tests {
+public class PartitionOnValueTests {
     @Test
-    public void PartitionOnValueTest() {
+    public void PartitionOnValueAllLeftTest() {
+        PartitionOnValue t = new PartitionOnValue();
+
+        Node head = arrayToList(new int[]{3,4,2,2,8,9});
+        head = t.Partition(head, 1);
+        int[] arr = listToArray(head);
+
+        Assertions.assertArrayEquals(new int[]{3,4,2,2,8,9}, arr);
+    }
+
+    @Test
+    public void PartitionOnValueNormalTest() {
+        PartitionOnValue t = new PartitionOnValue();
+
+        Node head = arrayToList(new int[]{3,4,2,2,8,9});
+        head = t.Partition(head, 2);
+        int[] arr = listToArray(head);
+
+        Assertions.assertArrayEquals(new int[]{2,2,3,4,8,9}, arr);
+    }
+
+    @Test
+    public void PartitionOnValueAllRightTest() {
         PartitionOnValue t = new PartitionOnValue();
 
         Node head = arrayToList(new int[]{3,4,2,2,8,9});
