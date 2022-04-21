@@ -58,25 +58,15 @@ public class lc54_SpiralMatrix {
     public void test01() {
         lc54_SpiralMatrix solu = new lc54_SpiralMatrix();
 
-        Assertions.assertArrayEquals(new int[]{1,2,3,6,9,8,7,4,5}, ToArray(solu.spiralOrder(new int[][]{
+        Assertions.assertArrayEquals(new int[]{1,2,3,6,9,8,7,4,5}, Common.ToArray(solu.spiralOrder(new int[][]{
                 {1,2,3},
                 {4,5,6},
                 {7,8,9}
         })));
-        Assertions.assertArrayEquals(new int[]{1,2,3,4,8,12,11,10,9,5,6,7}, ToArray(solu.spiralOrder(new int[][]{
+        Assertions.assertArrayEquals(new int[]{1,2,3,4,8,12,11,10,9,5,6,7}, Common.ToArray(solu.spiralOrder(new int[][]{
                 {1,2,3,4},
                 {5,6,7,8},
                 {9,10,11,12}
         })));
-    }
-
-    private int[] ToArray(List<Integer> list) {
-        int[] arr = new int[list.size()];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = list.get(i);
-        }
-
-        return arr;
     }
 }
