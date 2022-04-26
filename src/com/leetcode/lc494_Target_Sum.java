@@ -11,11 +11,31 @@ public class lc494_Target_Sum {
     For example, if nums = [2, 1], you can add a '+' before 2 and a '-' before 1 and concatenate them to build the expression "+2-1".
     Return the number of different expressions that you can build, which evaluates to target.
      */
-    public int findTargetSumWays(int[] nums, int target) {
-        return visit(nums, 0, 0, target, new HashMap<String, Integer>());
+    public int findTargetSumWays1(int[] nums, int target) {
+        return visit1(nums, 0, 0, target, new HashMap<String, Integer>());
     }
 
-    public int findTargetSumWays_dp(int[] nums, int target) {
+    private int visit1(int[] nums, int idx, int curr, int target, Map<String, Integer> map) {
+        String key = "" + idx + "_" + curr;
+
+        if (map.containsKey(key))
+            return map.get(key);
+
+        if (curr == target && idx == nums.length) {
+            map.put(key, 1);
+            return 1;
+        }
+
+        if (idx >= nums.length)
+            return 0;
+
+        int v = visit1(nums, idx+1, curr + nums[idx], target, map)
+                + visit1(nums, idx+1, curr - nums[idx], target, map);
+        map.put(key, v);
+        return v;
+    }
+
+    public int findTargetSumWays_dp1(int[] nums, int target) {
         int total = Arrays.stream(nums).sum();
         if (target < -total || target > total)
             return 0;
@@ -83,24 +103,41 @@ public class lc494_Target_Sum {
         return arr;
     }
 
-    private int visit(int[] nums, int idx, int curr, int target, Map<String, Integer> map) {
-        String key = "" + idx + "_" + curr;
-
-        if (map.containsKey(key))
-            return map.get(key);
-
-        if (curr == target && idx == nums.length) {
-            map.put(key, 1);
+    public int findTargetSumWays(int[] nums, int target) {
+        return visit2(nums, 0, target);
+    }
+    private int visit2(int[] nums, int idx, int rest) {
+        if (rest == 0  && idx == nums.length) {
             return 1;
         }
 
         if (idx >= nums.length)
             return 0;
 
-        int v = visit(nums, idx+1, curr + nums[idx], target, map)
-                + visit(nums, idx+1, curr - nums[idx], target, map);
-        map.put(key, v);
-        return v;
+        return visit2(nums, idx+1, rest + nums[idx])
+                + visit2(nums, idx+1, rest - nums[idx]);
+    }
+
+    public int findTargetSumWays_dp(int[] nums, int target) {
+        int total = Arrays.stream(nums).sum();
+        if (target < -total || target > total)
+            return 0;
+
+        int[][] dp = new int[nums.length+1][total*2+1];
+
+        dp[nums.length][total] = 1;
+        for (int row = nums.length-1; row >= 0; row--) {
+            for (int rest = -total; rest <= total; rest++) {
+                int col = rest+total;
+
+                if (col+nums[row] <= total*2)
+                    dp[row][col] += dp[row+1][col+nums[row]];
+                if (col-nums[row] >= 0)
+                    dp[row][col] += dp[row+1][col-nums[row]];
+            }
+        }
+
+        return dp[0][total+target];
     }
 
     @Test
