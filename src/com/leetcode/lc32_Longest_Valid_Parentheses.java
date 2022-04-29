@@ -26,7 +26,7 @@ public class lc32_Longest_Valid_Parentheses {
     public void test01() {
         lc32_Longest_Valid_Parentheses solu = new lc32_Longest_Valid_Parentheses();
 
-//        Assertions.assertEquals(0, solu.longestValidParentheses("))"));
+        Assertions.assertEquals(0, solu.longestValidParentheses("))"));
         Assertions.assertEquals(2, solu.longestValidParentheses("(()"));
         Assertions.assertEquals(2, solu.longestValidParentheses("()))"));
         Assertions.assertEquals(4, solu.longestValidParentheses("((())"));
