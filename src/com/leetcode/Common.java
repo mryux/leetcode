@@ -1,7 +1,9 @@
 package com.leetcode;
 
 import com.leetcode.linkedlist.TreeNode;
+import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -15,6 +17,46 @@ public class Common {
         }
 
         return arr;
+    }
+
+    public static Integer[] toIntegerArray(List<Integer> list) {
+        Integer[] arr = new Integer[list.size()];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = list.get(i);
+        }
+
+        return arr;
+    }
+
+    public static Integer[] serialize(TreeNode root) {
+        if (root == null)
+            return null;
+
+        List<Integer> list = new ArrayList<>();
+        Queue<TreeNode> que = new LinkedList<>();
+
+        que.add(root);
+        while (!que.isEmpty()) {
+            TreeNode node = que.poll();
+
+            list.add(node == null ? null : node.val);
+
+            if (node != null) {
+                que.add(node.left);
+                que.add(node.right);
+            }
+        }
+
+        // trim nulls at the end.
+        for (int i = list.size()-1; i >= 0; i--) {
+            if (list.get(i) != null)
+                break;
+
+            list.remove(i);
+        }
+
+        return Common.toIntegerArray(list);
     }
 
     public static TreeNode deserialize(Integer[] arr) {
@@ -45,5 +87,11 @@ public class Common {
         }
 
         return head;
+    }
+
+    @Test
+    public void testTreeNodeSerialization() {
+        TreeNode root = Common.deserialize(new Integer[]{1, 2, null, null, 3});
+        Integer[] arr = Common.serialize(root);
     }
 }
