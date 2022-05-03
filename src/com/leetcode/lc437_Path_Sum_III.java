@@ -71,8 +71,8 @@ public class lc437_Path_Sum_III {
     public void test01() {
         lc437_Path_Sum_III solu = new lc437_Path_Sum_III();
 
-        Assertions.assertEquals(1, solu.pathSum(Common.Deserialize(new Integer[]{1,2}), 2));
-        Assertions.assertEquals(3, solu.pathSum(Common.Deserialize(new Integer[]{5,4,8,11,null,13,4,7,2,null,null,5,1}), 22));
-        Assertions.assertEquals(3, solu.pathSum(Common.Deserialize(new Integer[]{10,5,-3,3,2,null,11,3,-2,null,1}), 8));
+        Assertions.assertEquals(1, solu.pathSum(Common.deserialize(new Integer[]{1,2}), 2));
+        Assertions.assertEquals(3, solu.pathSum(Common.deserialize(new Integer[]{5,4,8,11,null,13,4,7,2,null,null,5,1}), 22));
+        Assertions.assertEquals(3, solu.pathSum(Common.deserialize(new Integer[]{10,5,-3,3,2,null,11,3,-2,null,1}), 8));
     }
 }

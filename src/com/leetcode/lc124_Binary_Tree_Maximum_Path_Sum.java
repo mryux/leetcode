@@ -52,8 +52,8 @@ public class lc124_Binary_Tree_Maximum_Path_Sum {
     public void test01() {
         lc124_Binary_Tree_Maximum_Path_Sum solu = new lc124_Binary_Tree_Maximum_Path_Sum();
 
-        Assertions.assertEquals(1, solu.maxPathSum(Common.Deserialize(new Integer[] {-2,1})));
-        Assertions.assertEquals(6, solu.maxPathSum(Common.Deserialize(new Integer[] {1,2,3})));
-        Assertions.assertEquals(42, solu.maxPathSum(Common.Deserialize(new Integer[] {-10,9,20,null,null,15,7})));
+        Assertions.assertEquals(1, solu.maxPathSum(Common.deserialize(new Integer[] {-2,1})));
+        Assertions.assertEquals(6, solu.maxPathSum(Common.deserialize(new Integer[] {1,2,3})));
+        Assertions.assertEquals(42, solu.maxPathSum(Common.deserialize(new Integer[] {-10,9,20,null,null,15,7})));
     }
 }

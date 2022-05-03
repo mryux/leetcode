@@ -17,7 +17,7 @@ public class Common {
         return arr;
     }
 
-    public static TreeNode Deserialize(Integer[] arr) {
+    public static TreeNode deserialize(Integer[] arr) {
         if (arr == null || arr.length == 0)
             return null;
 
