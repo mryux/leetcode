@@ -15,8 +15,8 @@ public class lc440_Backpack_III {
      * @return: an array
      */
     public int backPackIII(int[] a, int[] v, int m) {
-//        return visit(a, v, 0, m);
-        return visit_dp(a, v, m);
+        return visit(a, v, 0, m);
+//        return visit_dp(a, v, m);
     }
 
     private int visit_dp(int[] a, int[] v, int m) {
@@ -55,10 +55,8 @@ public class lc440_Backpack_III {
 
         int max = 0;
 
-        for (int i = curr; i < a.length; i++) {
-            for (int j = 0; j <= target/a[i]; j++) {
-                max = Math.max(max, visit(a, v, curr+1, target-a[i]*j) + v[i]*j);
-            }
+        for (int j = 0; j <= target/a[curr]; j++) {
+            max = Math.max(max, visit(a, v, curr+1, target-a[curr]*j) + v[curr]*j);
         }
 
         return max;
