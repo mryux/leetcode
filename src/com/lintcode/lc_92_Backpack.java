@@ -15,6 +15,60 @@ public class lc_92_Backpack {
     }
 
     private int visit_dp(int max, int[] arr) {
+        int N = arr.length;
+        int[] dp = new int[max+1];
+
+        for (int i = 0; i < N-1; i++) {
+            for (int j = max; j >= arr[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j-arr[i]]+arr[i]);
+            }
+        }
+
+        // 最后一行的dp[max]可以直接取出来，不需要再走一遍循环
+        if (max > arr[N-1])
+            return Math.max(dp[max], dp[max-arr[N-1]]+arr[N-1]);
+        return dp[max];
+    }
+
+    private int visit_dp_x2(int max, int[] arr) {
+        int N = arr.length;
+        int[][] dp = new int[2][max+1];
+
+        for (int i = 0; i <= max; i++) {
+            if (i >= arr[0])
+                dp[0][i] = arr[0];
+        }
+        for (int i = 1; i < N; i++) {
+            for (int j = 0; j <= max; j++) {
+                dp[i&1][j] = dp[(i-1)&1][j];
+                if (j >= arr[i])
+                    dp[i&1][j] = Math.max(dp[i&1][j], dp[(i-1)&1][j-arr[i]]+arr[i]);
+            }
+        }
+
+        return dp[(N-1)&1][max];
+    }
+
+    private int visit_dp1(int max, int[] arr) {
+        int N = arr.length;
+        int[][] dp = new int[N][max+1];
+
+        for (int i = 0; i <= max; i++) {
+            if (i >= arr[0])
+                dp[0][i] = arr[0];
+        }
+        for (int i = 1; i < N; i++) {
+            for (int j = 0; j <= max; j++) {
+                dp[i][j] = dp[i-1][j];
+                if (j >= arr[i])
+                    dp[i][j] = Math.max(dp[i][j], dp[i-1][j-arr[i]]+arr[i]);
+            }
+        }
+
+        return dp[N-1][max];
+    }
+
+    private int visit_dp_fromdfs(int max, int[] arr) {
         int[][] dp = new int[arr.length+1][max+1];
 
         for (int i = arr.length-1; i >= 0; i--) {
