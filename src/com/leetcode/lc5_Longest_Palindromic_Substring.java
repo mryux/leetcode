@@ -14,7 +14,7 @@ public class lc5_Longest_Palindromic_Substring {
     }
 
     private String manacher01(String s) {
-        char[] str = managerString(s);
+        char[] str = manacherString(s);
         int[] pArr = new int[str.length];
         int C = -1;
         int R = -1;
@@ -54,7 +54,7 @@ public class lc5_Longest_Palindromic_Substring {
         return String.valueOf(buf);
     }
 
-    private char[] managerString(String s) {
+    private char[] manacherString(String s) {
         char[] ret = new char[s.length()*2+1];
 
         Arrays.fill(ret, '#');
