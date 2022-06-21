@@ -12,8 +12,30 @@ public class lc22_Generate_Parentheses {
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
 
-        visit(n, 0, 0, "", ans);
+        //visit(n, 0, 0, "", ans);
+        process(new char[2*n], 0, 0, n, ans);
         return ans;
+    }
+
+    // 依次在path上填写决定
+    // ( ( ) ) ( )....
+    // 0 1 2 3 4 5
+    // path[0...index-1]决定已经做完了
+    // index位置上，( )
+    public void process(char[] path, int index, int leftMinusRight, int leftRest, List<String> ans) {
+        if (index == path.length) {
+            ans.add(String.valueOf(path));
+            return;
+        }
+
+        if (leftRest > 0) {
+            path[index] = '(';
+            process(path, index + 1, leftMinusRight + 1, leftRest - 1, ans);
+        }
+        if (leftMinusRight > 0) {
+            path[index] = ')';
+            process(path, index + 1, leftMinusRight - 1, leftRest, ans);
+        }
     }
 
     private void visit(int n, int left, int right, String path, List<String> ans) {

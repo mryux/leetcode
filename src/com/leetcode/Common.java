@@ -89,6 +89,29 @@ public class Common {
         return head;
     }
 
+    public static ListNode fromArray(int[] arr) {
+        ListNode dummy = new ListNode();
+        ListNode curr = dummy;
+
+        for (int v : arr) {
+            curr.next = new ListNode(v);
+            curr = curr.next;
+        }
+
+        return dummy.next;
+    }
+
+    public static int[] fromListNode(ListNode head) {
+        List<Integer> list = new ArrayList<>();
+
+        while (head != null) {
+            list.add(head.val);
+            head = head.next;
+        }
+
+        return ToArray(list);
+    }
+
     @Test
     public void testTreeNodeSerialization() {
         TreeNode root = Common.deserialize(new Integer[]{1, 2, null, null, 3});
