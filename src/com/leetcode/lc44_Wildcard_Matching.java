@@ -12,9 +12,8 @@ public class lc44_Wildcard_Matching {
         char[] pattern = p.toCharArray();
 
         pattern = trimStar(pattern);
-        return validateExpr(arr, pattern)
-                && visit_dp(arr, pattern);
-//            && visit(arr, 0, pattern, 0);
+        // return visit_dp(arr, pattern);
+        return visit_dp02(arr, pattern);
     }
 
     public boolean isMatch01(String s, String p) {
@@ -150,13 +149,60 @@ public class lc44_Wildcard_Matching {
         return false;
     }
 
+    private boolean visit02(char[] arr, int si, char[] pattern, int pi) {
+        if (si == arr.length) {
+            return pi == pattern.length || (pattern[pi] == '*' && visit02(arr, si, pattern, pi+1));
+        }
+
+        if (pi == pattern.length)
+            return si == arr.length;
+
+        if (pattern[pi] != '?' && pattern[pi] != '*')
+            return arr[si] == pattern[pi] && visit02(arr, si+1, pattern, pi+1);
+
+        if (pattern[pi] == '?')
+            return visit02(arr, si+1, pattern, pi+1);
+
+        // pattern[pi] == '*'
+        for (int i = si; i <= arr.length; i++) {
+            if (visit02(arr, i, pattern, pi+1)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean visit_dp02(char[] arr, char[] pattern) {
+        int N = arr.length;
+        int M = pattern.length;
+        boolean[][] dp = new boolean[N+1][M+1];
+
+        dp[N][M] = true;
+        for (int i = M-1; i >= 0; i--) {
+            dp[N][i] = (pattern[i] == '*' && dp[N][i+1]);
+        }
+
+        for (int i = N-1; i >= 0; i--) {
+            for (int j = M-1; j >= 0; j--) {
+                if (pattern[j] == '*') {
+                    dp[i][j] = dp[i+1][j] || dp[i][j+1];
+                } else {
+                    dp[i][j] = (pattern[j] == '?' || arr[i] == pattern[j]) && dp[i+1][j+1];
+                }
+            }
+        }
+
+        return dp[0][0];
+    }
+
     @Test
     public void test01() {
         lc44_Wildcard_Matching solu = new lc44_Wildcard_Matching();
 
-        Assertions.assertTrue(solu.isMatch("", ""));
         Assertions.assertFalse(solu.isMatch("abbabaaabbabbaababbabbbbbabbbabbbabaaaaababababbbabababaabbababaabbbbbbaaaabababbbaabbbbaabbbbababababbaabbaababaabbbababababbbbaaabbbbbabaaaabbababbbbaababaabbababbbbbababbbabaaaaaaaabbbbbaabaaababaaaabb", "**aa*****ba*a*bb**aa*ab****a*aaaaaa***a*aaaa**bbabb*b*b**aaaaaaaaa*a********ba*bbb***a*ba*bb*bb**a*b*bb"));
         Assertions.assertTrue(solu.isMatch("", "******"));
+        Assertions.assertTrue(solu.isMatch("", ""));
         Assertions.assertTrue(solu.isMatch("aa", "*"));
         Assertions.assertFalse(solu.isMatch("bbbbbbbabbaabbabbbbaaabbabbabaaabbababbbabbbabaaabaab", "b*b*ab**ba*b**b***bba"));
         Assertions.assertFalse(solu.isMatch("aa", "a"));
