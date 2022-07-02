@@ -51,7 +51,7 @@ public class lc56_Merge_Intervals {
 
         int iii = ans.length;
 
-        //Assertions.assertEquals(3, ans.length);
+        Assertions.assertEquals(3, ans.length);
         Set<List<Integer>> set = arrayToSet(ans);
 
         Assertions.assertTrue(set.contains(List.of(1,6)));
@@ -78,8 +78,7 @@ public class lc56_Merge_Intervals {
 
         for (int[] p : ans) {
             List<Integer> list = new ArrayList<>();
-            list.add(p[0], p[1]);
-            set.add(list);
+            set.add(List.of(p[0], p[1]));
         }
 
         return set;
