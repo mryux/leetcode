@@ -24,7 +24,7 @@ public class lc79_Word_Search {
         if (row < 0 || row >= board.length || col < 0 || col >= board[0].length)
             return false;
         // cell visited || word mismatch
-        if (board[row][col] == '#' || board[row][col] != word[idx])
+        if (board[row][col] != word[idx])
             return false;
 
         if (idx == word.length-1)
@@ -32,7 +32,7 @@ public class lc79_Word_Search {
 
         char c = board[row][col];
 
-        board[row][col] = '#';
+        board[row][col] = 0;
         boolean found = visit(board, row-1, col+0, word, idx+1)
                 || visit(board, row+1, col+0, word, idx+1)
                 || visit(board, row, col-1, word, idx+1)
