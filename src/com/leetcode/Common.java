@@ -3,6 +3,7 @@ package com.leetcode;
 import com.leetcode.linkedlist.TreeNode;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +18,17 @@ public class Common {
         }
 
         return arr;
+    }
+
+    public static <T extends Object> T[] toArray(Class<T> clazz, List<T> list) {
+        int size = list.size();
+        T[] ans = (T[]) Array.newInstance(clazz, size);
+
+        for (int i = 0; i < size; i++) {
+            ans[i] = list.get(i);
+        }
+
+        return ans;
     }
 
     public static Integer[] toIntegerArray(List<Integer> list) {

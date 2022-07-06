@@ -56,17 +56,7 @@ public class lc131_Palindrome_Partitioning {
 
         List<List<String>> ans = solu.partition("aab");
         Assertions.assertEquals(2, ans.size());
-        Assertions.assertArrayEquals(new String[]{"a", "a", "b"}, toArray(ans.get(0)));
-        Assertions.assertArrayEquals(new String[]{"aa", "b"}, toArray(ans.get(1)));
-    }
-
-    private String[] toArray(List<String> list) {
-        String[] ret = new String[list.size()];
-
-        for (int i = 0; i < list.size(); i++) {
-            ret[i] = list.get(i);
-        }
-
-        return ret;
+        Assertions.assertArrayEquals(new String[]{"a", "a", "b"}, Common.toArray(String.class, ans.get(0)));
+        Assertions.assertArrayEquals(new String[]{"aa", "b"}, Common.toArray(String.class, ans.get(1)));
     }
 }
