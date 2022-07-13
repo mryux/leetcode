@@ -42,14 +42,14 @@ public class lc118_Pascals_Triangle {
         List<List<Integer>> ans = solu.generate(5);
 
         Assertions.assertEquals(5, ans.size());
-        Assertions.assertArrayEquals(Common.ToArray(List.of(1)), Common.ToArray(ans.get(0)));
-        Assertions.assertArrayEquals(Common.ToArray(List.of(1,1)), Common.ToArray(ans.get(1)));
-        Assertions.assertArrayEquals(Common.ToArray(List.of(1,2,1)), Common.ToArray(ans.get(2)));
-        Assertions.assertArrayEquals(Common.ToArray(List.of(1,3,3,1)), Common.ToArray(ans.get(3)));
-        Assertions.assertArrayEquals(Common.ToArray(List.of(1,4,6,4,1)), Common.ToArray(ans.get(4)));
+        Assertions.assertArrayEquals(Common.toArray(List.of(1)), Common.toArray(ans.get(0)));
+        Assertions.assertArrayEquals(Common.toArray(List.of(1,1)), Common.toArray(ans.get(1)));
+        Assertions.assertArrayEquals(Common.toArray(List.of(1,2,1)), Common.toArray(ans.get(2)));
+        Assertions.assertArrayEquals(Common.toArray(List.of(1,3,3,1)), Common.toArray(ans.get(3)));
+        Assertions.assertArrayEquals(Common.toArray(List.of(1,4,6,4,1)), Common.toArray(ans.get(4)));
 
         ans = solu.generate(1);
         Assertions.assertEquals(1, ans.size());
-        Assertions.assertArrayEquals(Common.ToArray(List.of(1)), Common.ToArray(ans.get(0)));
+        Assertions.assertArrayEquals(Common.toArray(List.of(1)), Common.toArray(ans.get(0)));
     }
 }

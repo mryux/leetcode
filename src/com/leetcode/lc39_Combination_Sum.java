@@ -35,7 +35,7 @@ public class lc39_Combination_Sum {
         lc39_Combination_Sum solu = new lc39_Combination_Sum();
         List<List<Integer>> res = solu.combinationSum(new int[]{2,3,6,7}, 7);
 
-        Assertions.assertArrayEquals(new int[]{2,2,3}, Common.ToArray(res.get(0)));
-        Assertions.assertArrayEquals(new int[]{7}, Common.ToArray(res.get(1)));
+        Assertions.assertArrayEquals(new int[]{2,2,3}, Common.toArray(res.get(0)));
+        Assertions.assertArrayEquals(new int[]{7}, Common.toArray(res.get(1)));
     }
 }

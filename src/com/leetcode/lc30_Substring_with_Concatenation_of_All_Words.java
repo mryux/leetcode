@@ -148,11 +148,11 @@ public class lc30_Substring_with_Concatenation_of_All_Words {
     public void test01() {
         lc30_Substring_with_Concatenation_of_All_Words solu = new lc30_Substring_with_Concatenation_of_All_Words();
 
-        Assertions.assertArrayEquals(new int[]{0,1,2,3,4,5,6,7,8,9,10}, Common.ToArray(solu.findSubstring("aaaaaaaaaaaaaa", new String[]{"aa","aa"})));
-        Assertions.assertArrayEquals(new int[]{13}, Common.ToArray(solu.findSubstring("lingmindraboofooowingdingbarrwingmonkeypoundcake", new String[]{"fooo","barr","wing","ding","wing"})));
-        Assertions.assertArrayEquals(new int[]{8}, Common.ToArray(solu.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","good"})));
-        Assertions.assertArrayEquals(new int[]{0, 9}, Common.ToArray(solu.findSubstring("barfoothefoobarman", new String[]{"foo","bar"})));
-        Assertions.assertArrayEquals(new int[]{}, Common.ToArray(solu.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","word"})));
-        Assertions.assertArrayEquals(new int[]{6,9,12}, Common.ToArray(solu.findSubstring("barfoofoobarthefoobarman", new String[]{"bar","foo","the"})));
+        Assertions.assertArrayEquals(new int[]{0,1,2,3,4,5,6,7,8,9,10}, Common.toArray(solu.findSubstring("aaaaaaaaaaaaaa", new String[]{"aa","aa"})));
+        Assertions.assertArrayEquals(new int[]{13}, Common.toArray(solu.findSubstring("lingmindraboofooowingdingbarrwingmonkeypoundcake", new String[]{"fooo","barr","wing","ding","wing"})));
+        Assertions.assertArrayEquals(new int[]{8}, Common.toArray(solu.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","good"})));
+        Assertions.assertArrayEquals(new int[]{0, 9}, Common.toArray(solu.findSubstring("barfoothefoobarman", new String[]{"foo","bar"})));
+        Assertions.assertArrayEquals(new int[]{}, Common.toArray(solu.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","word"})));
+        Assertions.assertArrayEquals(new int[]{6,9,12}, Common.toArray(solu.findSubstring("barfoofoobarthefoobarman", new String[]{"bar","foo","the"})));
     }
 }

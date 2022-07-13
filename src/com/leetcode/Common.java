@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class Common {
-    public static int[] ToArray(List<Integer> list) {
+    public static int[] toArray(List<Integer> list) {
         int[] arr = new int[list.size()];
 
         for (int i = 0; i < arr.length; i++) {
@@ -121,7 +121,7 @@ public class Common {
             head = head.next;
         }
 
-        return ToArray(list);
+        return toArray(list);
     }
 
     @Test

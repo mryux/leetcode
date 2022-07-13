@@ -44,13 +44,13 @@ public class lc102_Binary_Tree_Level_Order_Traversal {
 
         List<List<Integer>> ans = solu.levelOrder(Common.deserialize(new Integer[]{3,9,20,null,null,15,7}));
         Assertions.assertEquals(3, ans.size());
-        Assertions.assertArrayEquals(new int[]{3}, Common.ToArray(ans.get(0)));
-        Assertions.assertArrayEquals(new int[]{9,20}, Common.ToArray(ans.get(1)));
-        Assertions.assertArrayEquals(new int[]{15,7}, Common.ToArray(ans.get(2)));
+        Assertions.assertArrayEquals(new int[]{3}, Common.toArray(ans.get(0)));
+        Assertions.assertArrayEquals(new int[]{9,20}, Common.toArray(ans.get(1)));
+        Assertions.assertArrayEquals(new int[]{15,7}, Common.toArray(ans.get(2)));
 
         ans = solu.levelOrder(Common.deserialize(new Integer[]{1}));
         Assertions.assertEquals(1, ans.size());
-        Assertions.assertArrayEquals(new int[]{1}, Common.ToArray(ans.get(0)));
+        Assertions.assertArrayEquals(new int[]{1}, Common.toArray(ans.get(0)));
 
 //        ans = solu.levelOrder(Common.deserialize(new Integer[]{}));
 //        Assertions.assertEquals(1, ans.size());

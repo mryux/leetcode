@@ -47,10 +47,10 @@ public class lc40_Combination_Sum_II {
         lc40_Combination_Sum_II solu = new lc40_Combination_Sum_II();
 
         List<List<Integer>> lists = solu.combinationSum2(new int[]{10,1,2,7,6,1,5}, 8);
-        Assertions.assertArrayEquals(new int[]{1,1,6}, Common.ToArray(lists.get(0)));
-        Assertions.assertArrayEquals(new int[]{1,2,5}, Common.ToArray(lists.get(1)));
-        Assertions.assertArrayEquals(new int[]{1,7}, Common.ToArray(lists.get(2)));
-        Assertions.assertArrayEquals(new int[]{2,6}, Common.ToArray(lists.get(3)));
+        Assertions.assertArrayEquals(new int[]{1,1,6}, Common.toArray(lists.get(0)));
+        Assertions.assertArrayEquals(new int[]{1,2,5}, Common.toArray(lists.get(1)));
+        Assertions.assertArrayEquals(new int[]{1,7}, Common.toArray(lists.get(2)));
+        Assertions.assertArrayEquals(new int[]{2,6}, Common.toArray(lists.get(3)));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class lc40_Combination_Sum_II {
         lc40_Combination_Sum_II solu = new lc40_Combination_Sum_II();
 
         List<List<Integer>> lists = solu.combinationSum2(new int[]{2,5,2,1,2}, 5);
-        Assertions.assertArrayEquals(new int[]{1,2,2}, Common.ToArray(lists.get(0)));
-        Assertions.assertArrayEquals(new int[]{5}, Common.ToArray(lists.get(1)));
+        Assertions.assertArrayEquals(new int[]{1,2,2}, Common.toArray(lists.get(0)));
+        Assertions.assertArrayEquals(new int[]{5}, Common.toArray(lists.get(1)));
     }
 }

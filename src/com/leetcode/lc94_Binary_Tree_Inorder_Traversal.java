@@ -66,8 +66,8 @@ public class lc94_Binary_Tree_Inorder_Traversal {
     public void test01() {
         lc94_Binary_Tree_Inorder_Traversal solu = new lc94_Binary_Tree_Inorder_Traversal();
 
-        Assertions.assertArrayEquals(new int[]{1,3,2}, Common.ToArray(solu.inorderTraversal(Common.deserialize(new Integer[]{1,null,2,3}))));
-        Assertions.assertArrayEquals(new int[]{}, Common.ToArray(solu.inorderTraversal(Common.deserialize(new Integer[]{}))));
-        Assertions.assertArrayEquals(new int[]{1}, Common.ToArray(solu.inorderTraversal(Common.deserialize(new Integer[]{1}))));
+        Assertions.assertArrayEquals(new int[]{1,3,2}, Common.toArray(solu.inorderTraversal(Common.deserialize(new Integer[]{1,null,2,3}))));
+        Assertions.assertArrayEquals(new int[]{}, Common.toArray(solu.inorderTraversal(Common.deserialize(new Integer[]{}))));
+        Assertions.assertArrayEquals(new int[]{1}, Common.toArray(solu.inorderTraversal(Common.deserialize(new Integer[]{1}))));
     }
 }
